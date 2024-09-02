@@ -3,16 +3,26 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <groupId>io.github.justedlev.commons</groupId>
-        <artifactId>commons</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
-    </parent>
-
     <artifactId>spring-data-v3-commons</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
+    <url>https://github.com/justedlev/spring-data-v3-commons</url>
+
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>justedlev</id>
+            <name>Edward L.</name>
+            <email>jvstedlev@gmail.com</email>
+            <url>https://github.com/justedlev</url>
+        </developer>
+    </developers>
 
     <properties>
         <java.version>17</java.version>
@@ -176,5 +186,13 @@
             </plugin>
         </plugins>
     </build>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub Mvn Repository</name>
+            <url>https://maven.pkg.github.com/justedlev/${project.artifactId}</url>
+        </repository>
+    </distributionManagement>
 
 </project>
