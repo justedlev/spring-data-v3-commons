@@ -16,12 +16,13 @@ import java.util.Objects;
 /**
  * An abstract base class for persistable entities. This class provides a base implementation for
  * entities with an ID and includes methods for checking if an entity is new, as well as
- * `equals` and `hashCode` implementations.
+ * {@code equals(Object o)} and {@code hashCode()} implementations.
  *
  * @param <K> the type of the primary key, which must be {@link Serializable}.
  *
  * @author Justedlev
  * @see Persistable
+ * @see org.springframework.data.jpa.domain.AbstractPersistable
  */
 @Getter
 @SuperBuilder

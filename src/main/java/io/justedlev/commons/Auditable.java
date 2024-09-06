@@ -25,8 +25,9 @@ import java.sql.Timestamp;
  * the timestamps for these actions.
  *
  * @param <K> the type of the primary key, which must be {@link Serializable}.
- *
  * @author Justedlev
+ * @see org.springframework.data.jpa.domain.AbstractPersistable
+ * @see org.springframework.data.domain.Persistable
  */
 @Getter
 @Setter

@@ -15,6 +15,12 @@
         </license>
     </licenses>
 
+    <scm>
+        <connection>scm:git:git://github.com/justedlev/spring-data-v3-commons.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/justedlev/spring-data-v3-commons.git</developerConnection>
+        <url>https://github.com/justedlev/spring-data-v3-commons</url>
+    </scm>
+
     <developers>
         <developer>
             <id>justedlev</id>
@@ -30,13 +36,12 @@
         <project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
-        <lombok.version>1.18.24</lombok.version>
+        <lombok.version>1.18.34</lombok.version>
         <jakarta.persistence.version>3.1.0</jakarta.persistence.version>
         <hibernate.version>6.5.2.Final</hibernate.version>
         <spring.data.commons.version>3.3.3</spring.data.commons.version>
         <projectreactor.core.version>3.6.9</projectreactor.core.version>
         <spring.data.jpa.version>3.3.3</spring.data.jpa.version>
-        <delombok.dir>${project.build.directory}/delombok</delombok.dir>
     </properties>
 
     <dependencyManagement>
@@ -130,7 +135,7 @@
                         </goals>
                         <configuration>
                             <encoding>${encoding}</encoding>
-                            <outputDirectory>${delombok.dir}</outputDirectory>
+                            <outputDirectory>${project.build.directory}/delombok</outputDirectory>
                             <sourceDirectory>${project.build.sourceDirectory}</sourceDirectory>
                             <addOutputDirectory>false</addOutputDirectory>
                         </configuration>
@@ -150,7 +155,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <sourcepath>${delombok.dir}</sourcepath>
+                    <sourcepath>${project.build.directory}/delombok</sourcepath>
                     <source>${java.version}</source>
                     <encoding>${project.build.sourceEncoding}</encoding>
                     <charset>${project.build.sourceEncoding}</charset>
