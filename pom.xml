@@ -6,6 +6,9 @@
     <groupId>io.github.justedlev.commons</groupId>
     <artifactId>spring-boot-v3-commons</artifactId>
     <version>1.1.0</version>
+    <name>Spring Boot v3 Commons</name>
+    <packaging>jar</packaging>
+    <description>🗃️ Utils for Spring Boot v3</description>
     <url>https://github.com/justedlev/${project.artifactId}</url>
     <licenses>
         <license>
