@@ -3,6 +3,8 @@ name: Maven Package
 on:
   release:
     types: [ created ]
+    tags: [ "v*.*.*" ]
+  workflow_dispatch:
 
 jobs:
   build:

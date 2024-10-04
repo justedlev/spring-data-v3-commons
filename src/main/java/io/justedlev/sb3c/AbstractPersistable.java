@@ -1,13 +1,12 @@
-package io.justedlev.commons;
+package io.justedlev.sb3c;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.MappedSuperclass;
-import jakarta.persistence.Transient;
+import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.Accessors;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.Hibernate;
 import org.springframework.data.domain.Persistable;
+import org.springframework.lang.Nullable;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -28,8 +27,10 @@ import java.util.Objects;
 @SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
+@Accessors(chain = true, fluent = true)
 @MappedSuperclass
 public abstract class AbstractPersistable<K extends Serializable> implements Persistable<K>, Serializable {
+
     @Serial
     private static final long serialVersionUID = 202409011946L;
 
@@ -40,6 +41,14 @@ public abstract class AbstractPersistable<K extends Serializable> implements Per
     @GeneratedValue
     @Setter(AccessLevel.PROTECTED)
     private K id;
+
+    /**
+     * @see Persistable#getId()
+     */
+    @Override
+    public K getId() {
+        return this.id();
+    }
 
     /**
      * @see Persistable#isNew()
@@ -74,4 +83,5 @@ public abstract class AbstractPersistable<K extends Serializable> implements Per
     public final int hashCode() {
         return Objects.hashCode(id);
     }
+
 }
