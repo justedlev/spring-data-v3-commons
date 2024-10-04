@@ -1,4 +1,4 @@
-package io.justedlev.commons;
+package io.justedlev.sb3c;
 
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
