@@ -24,10 +24,13 @@ jobs:
           server-id: github
           settings-path: ${{ github.workspace }}
 
+      - name: Prepare mvnw
+        run: chmod +x ./mvnw
+
       - name: Build with Maven
-        run: mvn -B package --file pom.xml
+        run: ./mvnw -B package --file pom.xml
 
       - name: Publish to GitHub Packages Apache Maven
-        run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
+        run: ./mvnw deploy -s $GITHUB_WORKSPACE/settings.xml -P github
         env:
           GITHUB_TOKEN: ${{ github.token }}
