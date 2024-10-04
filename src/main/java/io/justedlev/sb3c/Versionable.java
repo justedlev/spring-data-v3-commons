@@ -1,12 +1,10 @@
-package io.justedlev.commons;
+package io.justedlev.sb3c;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.persistence.Version;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.validation.constraints.NotNull;
+import lombok.*;
+import lombok.experimental.Accessors;
 import lombok.experimental.SuperBuilder;
 
 import java.io.Serial;
@@ -17,23 +15,28 @@ import java.io.Serializable;
  * This class extends the {@link Auditable} class and adds a version field.
  *
  * @param <K> the type of the primary key, which must be {@link Serializable}.
- *
  * @author Justedlev
+ * @see Version
  */
 @Getter
-@Setter
+@Setter(AccessLevel.PROTECTED)
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
+@Accessors(chain = true, fluent = true)
 @MappedSuperclass
 public abstract class Versionable<K extends Serializable> extends Auditable<K> implements Serializable {
+
     @Serial
     private static final long serialVersionUID = 202409011946L;
 
     /**
      * The version number of the entity. This field is used for optimistic locking.
+     *
+     * @see Version
      */
     @Version
-    @Column(name = "version", nullable = false)
+    @NotNull
     private Long version;
+
 }

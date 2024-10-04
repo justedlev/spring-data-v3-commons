@@ -1,12 +1,9 @@
-package io.justedlev.commons;
+package io.justedlev.sb3c;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.MappedSuperclass;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import lombok.experimental.Accessors;
 import lombok.experimental.SuperBuilder;
 import org.springframework.data.annotation.CreatedBy;
@@ -34,10 +31,11 @@ import java.sql.Timestamp;
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-@Accessors(chain = true)
+@Accessors(chain = true, fluent = true)
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
 public abstract class Auditable<K extends Serializable> extends AbstractPersistable<K> implements Serializable {
+
     @Serial
     private static final long serialVersionUID = 202409011946L;
 
@@ -45,7 +43,6 @@ public abstract class Auditable<K extends Serializable> extends AbstractPersista
      * The user who created the entity.
      */
     @CreatedBy
-    @Column(name = "created_by")
     private String createdBy;
 
     /**
@@ -53,14 +50,12 @@ public abstract class Auditable<K extends Serializable> extends AbstractPersista
      * This field is mandatory.
      */
     @CreatedDate
-    @Column(name = "created_at", nullable = false)
     private Timestamp createdAt;
 
     /**
      * The user who last modified the entity.
      */
     @LastModifiedBy
-    @Column(name = "modified_by")
     private String modifiedBy;
 
     /**
@@ -68,6 +63,6 @@ public abstract class Auditable<K extends Serializable> extends AbstractPersista
      * This field is mandatory.
      */
     @LastModifiedDate
-    @Column(name = "modified_at", nullable = false)
     private Timestamp modifiedAt;
+
 }
